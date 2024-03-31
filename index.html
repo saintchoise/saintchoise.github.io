@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Регистрация</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
+
     /* Пример стилей. Можете изменить их по своему усмотрению */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       text-align: center; /* Центрируем текст */
+      color: var(--tg-theme-text-color);
+      background: var(--tg-theme-bg-color);
     }
     form {
       max-width: 400px;
       margin: 0 auto;
     }
-    input[type="text"], select, input[type="checkbox"], #additionalText {
+    input[type="text"], textarea, select, input[type="checkbox"], #additionalText {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--tg-theme-text-color);
     }
     label {
       display: block; /* Полностью занимает ширину родительского элемента */
-      font-weight: bold; /* Жирный шрифт */
+      /* font-weight: bold; Жирный шрифт */
       text-align: left; /* Выравниваем текст по левому краю */
+      margin-bottom: 5px; /* Отступ снизу от каждого текстового поля */
     }
     input[type="submit"] {
       background-color: #4CAF50;
@@ -35,6 +44,12 @@
     }
     input[type="submit"]:hover {
       background-color: #45a049;
+    }
+    input[type="number"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
     }
     .buttons {
       margin-bottom: 20px; /* Отступ под кнопками */
@@ -51,10 +66,25 @@
     .buttons button:hover {
       background-color: #45a049;
     }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      padding-bottom: 15px;
+      padding-top:15px;
+    }
+    #additionalText {
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--tg-theme-text-color);
+      font-size: 80%;
+      line-height: 140%;
+    }
+
+
   </style>
 </head>
 <body>
-
+  <div id="usercard"> </div>
   <div class="buttons">
     <button onclick="window.location.href='расписание.html'">Расписание</button>
     <button onclick="window.location.href='залы.html'">Залы</button>
@@ -65,58 +95,68 @@
   <h2>Регистрация</h2>
 
   <form id="registrationForm">
-    <label for="choice">Выбор:</label>
+    <label for="choice">Выберите дату посещения:</label>
     <select id="choice" name="choice">
-      <option value="option1">Вариант 1</option>
-      <option value="option2">Вариант 2</option>
+      <option value="" disabled selected hidden>Выберите дату</option>
+      <option value="option1">6 мая</option>
+      <option value="option2">7 мая</option>
+      <option value="option3">Оба дня</option>
     </select>
 
     <div id="additionalText">
       <!-- Здесь будет отображаться текстовая информация -->
     </div>
 
-    <label for="field1">Текстовое поле 1:</label>
-    <input type="text" id="field1" name="field1" required>
+    <label for="name">ФИО:</label>
+    <input type="text" id="name" name="name" required>
 
-    <label for="field2">Текстовое поле 2:</label>
-    <input type="text" id="field2" name="field2" required>
+    <label for="passport">Паспортные данные: серия, номер, кем и когда выдан</label>
+    <textarea rows="4" id="passport" name="passport" required></textarea>
 
-    <label for="field3">Текстовое поле 3:</label>
-    <input type="text" id="field3" name="field3" required>
+    <label for="age">Возраст:</label>
+    <input type="number" id="age" name="age" min="0" max="99" required>
 
-    <label for="field4">Текстовое поле 4:</label>
-    <input type="text" id="field4" name="field4" required>
+    <label for="email">Электронная почта:</label>
+    <input type="email" id="email" name="email" required>
 
-    <label for="field5">Текстовое поле 5:</label>
-    <input type="text" id="field5" name="field5" required>
+    <label for="city">Город проживания:</label>
+    <input type="text" id="city" name="city" required>
 
-    <label for="field6">Текстовое поле 6:</label>
-    <input type="text" id="field6" name="field6" required>
+    <label for="job">Должность:</label>
+    <input type="text" id="job" name="job" required>
 
-    <label for="field7">Текстовое поле 7:</label>
-    <input type="text" id="field7" name="field7" required>
+    <label for="company">Название организации, которую представляете:</label>
+    <input type="text" id="company" name="company" required>
 
-    <label for="field8">Текстовое поле 8:</label>
-    <input type="text" id="field8" name="field8" required>
+    <label for="purpose">Цель посещения форума:</label>
+    <textarea rows="3" id="purpose" name="purpose" required></textarea>
 
-    <input type="checkbox" id="agree" name="agree" required>
-    <label for="agree">Я согласен с условиями</label>
+    <div class="checkbox-container">
+  <input type="checkbox" id="agree" name="agree" required>
+  <label for="agree">Согласие на обработку персональных данных (в соответствии с Федеральным закон от 27.07.2006 N 152-ФЗ (ред. от 06.02.2023) "О персональных данных")</label>
+</div>
 
     <input type="submit" value="Зарегистрироваться">
   </form>
 
-  <script>
+<script>
+      var schedule6may = "<b>09:00-10:00</b> Регистрация участников Форума<br><br><b>10:00-12:20</b> Пленарное заседание «Год семьи».<br><i>Локация: Конференц зал</i> <br><br><b>12:20-13:00</b> Кофе-брейк<br><i>Локация: Лекторий</i><br><br><b>13:00-13:45</b> Интервью с психологом (Дарья Алексеевна Ерёмина, доктор психологических наук, доцент кафедры медицинской психологии и психофизиологии СПбГУ, клинический психолог)<br><i>Локация: Конференц зал</i><br><br><b>14:00-15:30</b> Панельная сессия «Воспитание через слово»<br><i>Модератор: Директор Благотворительного Фонда «Команда страны» Суворова А.А.<br>Локация: Конференц зал</i><br><br><b>14:00-15:30</b> Панельная сессия «Семья и социальная справедливость. Механизмы поддержки семей»<br><i>Модератор: Председатель экспертного совета по добровольчеству и добрым делам Будяк А.А.<br>Локация: Лекторий</i><br><br><b>16:00-17:00</b> Экскурсионная программа по музею Христианской культуры<br><br><b>17:30-18:00</b> Подведение итогов первого дня форума<br><i>Локация: Конференц зал</i><br><br><b>18:30-21:00</b> Презентация Шеф-повара ресторана МЦ «Наследие» в рамках светского мероприятия (вход по приглашениям)<br><br>";
+      var schedule7may = "<b>10:00-11:00</b> Аккредитация участников Форума <br><br><b>11:00-12:00</b> Интервью с историком (Владимир Александрович Носов, историк, конфликтолог, специалист по работе с молодежью СПб ГБУ Дом молодежи «Форпост»)<br><i>Локация: Конференц зал</i><br><br><b>12:00-13:30</b> Круглый стол «Здоровая нация как залог будущего страны»<br><i>Модератор: Председатель правления АНО «Команда страны» Бубнов Д.В.<br>Локация: Стеклянный зал</i><br><br><b>12:00-13:30</b> Панельная дискуссия «Традиционные духовно-нравственные ценности как культурный код семьи и общества РФ»<br><i>Модератор: Председатель экспертного совета по духовно-нравственному просвещению и связям с Русской Православной Церковью Шевчук В.А<br>Локация: Конференц зал</i><br><br><b>14:00-15:00</b> Кофе-брейк<br><i>Локация: Ресторан МЦ «Наследие»</i><br><br><b>15:00-15:10</b> Подписание соглашения между МЦ «Наследие», АНО «Команда страны» и АНО «Институт Регионального и Муниципального Развития»<br><i>Локация: Музей Христианской культуры</i><br><br><b>15:10-16:00</b> Презентация фильма<br><i>Локация: Конференц зал</i><br><br><b>16:00-17:00 </b>Подведение итогов форума<br><i>Локация: Конференц зал</i><br><br><b>17:00-18:00</b> Экскурсионная программа по музею Христианской культуры<br><br><br><b><u>Детская программа</u><br>Зал: Лекторий</b><br><br><b>10:00-11:00</b> Экскурсия «Светлый праздник Пасхи» по музею Христианской культуры<br><b>11:00-12:30</b> Пасхальный мастер-класс<br><b>12:30-13:30</b> Сладкий стол";
     document.getElementById("choice").addEventListener("change", function() {
       var choice = this.value;
       var additionalText = document.getElementById("additionalText");
 
       if (choice === "option1") {
-        additionalText.innerHTML = "<p>Текст 1</p>";
+        additionalText.innerHTML = schedule6may;
+        additionalText.style.display = "block"; // Показываем дополнительный текст
+      } else if (choice === "option2") {
+        additionalText.innerHTML = schedule7may;
+        additionalText.style.display = "block"; // Показываем дополнительный текст
       } else {
-        additionalText.innerHTML = "<p>Текст 2</p>";
+        additionalText.innerHTML = ""; // Очищаем содержимое дополнительного текста
+        additionalText.style.display = "none"; // Скрываем дополнительный текст
       }
     });
-  </script>
-
+</script>
 </body>
 </html>
