@@ -107,25 +107,18 @@
   appearance: none;
   background-color: var(--tg-theme-secondary-bg-color);
   color: var(--tg-theme-text-color);
-  border: 1px; /* Пример границы */
+  border: 1px solid; /* Пример границы */
   padding: 10px;
   border-radius: 6px; /* Пример скругления углов */
 }
 
 /* Добавление стрелки, чтобы пользователь понимал, что это выпадающий список */
  #choise {
+  background-image: url('https://img.icons8.com/material-rounded/24/000000/circled-chevron-down.png');
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 3%;
 }
-
- .light {
-  background-image: url('https://img.icons8.com/?size=256&id=88000&format=png');
- }
-
- .dark {
-  background-image: url("https://img.icons8.com/?size=256&id=88020&format=png");
- }
 
 
   </style>
@@ -215,23 +208,6 @@
   }
 });
 </script>
-<script>
-  // Функция для установки класса в зависимости от темы
-function setThemeClass(theme) {
-    var customSelect = document.getElementById('choise');
-    customSelect.className = theme;
-}
-
-// Обработчик изменения темы в Telegram
-TelegramWebApp.onThemeChanged(function(theme) {
-    setThemeClass(theme);
-});
-
-// Получение текущей темы и установка класса
-var currentTheme = TelegramWebApp.theme;
-setThemeClass(currentTheme);
-
-  </script>
 
 </body>
 </html>
