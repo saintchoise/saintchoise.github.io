@@ -113,12 +113,19 @@
 }
 
 /* Добавление стрелки, чтобы пользователь понимал, что это выпадающий список */
-select {
-  background-image: url('https://img.icons8.com/?size=256&id=88000&format=png');
+ #choise {
   background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 3%;
 }
+
+ .light {
+  background-image: url('https://img.icons8.com/?size=256&id=88000&format=png');
+ }
+
+ .dark {
+  background-image: url("https://img.icons8.com/?size=256&id=88020&format=png");
+ }
 
 
   </style>
@@ -208,6 +215,23 @@ select {
   }
 });
 </script>
+<script>
+  // Функция для установки класса в зависимости от темы
+function setThemeClass(theme) {
+    var customSelect = document.getElementById('customSelect');
+    customSelect.className = theme;
+}
+
+// Обработчик изменения темы в Telegram
+TelegramWebApp.onThemeChanged(function(theme) {
+    setThemeClass(theme);
+});
+
+// Получение текущей темы и установка класса
+var currentTheme = TelegramWebApp.theme;
+setThemeClass(currentTheme);
+
+  </script>
 
 </body>
 </html>
