@@ -58,6 +58,7 @@
       margin-bottom: 10px;
       box-sizing: border-box;
       border-radius: 6px;
+      color: var(--tg-theme-text-color);
     }
     .buttons {
       display: flex; 
@@ -128,7 +129,6 @@
 
     #error {
       color: #e60000;
-      font-weight: bold;
       padding: 10px;
     }
 
@@ -273,8 +273,9 @@
           } 
         else {
         // если всё заполнено
+          let agreeValue = agree.checked;
           let data = {
-            date: choise,
+            date: choice,
             name: name,
             passport: passport,
             age: age,
@@ -283,7 +284,7 @@
             job: job,
             company: company,
             purpose: purpose,
-            agree: agree
+            agree: agreeValue
           }
           tg.sendData(JSON.stringify(data))
 
