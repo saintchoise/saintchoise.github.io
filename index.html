@@ -9,10 +9,10 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
 
-    /* Пример стилей. Можете изменить их по своему усмотрению */
+    
     body {
       font-family: 'Montserrat', sans-serif;
-      text-align: center; /* Центрируем текст */
+      text-align: center; 
       color: var(--tg-theme-text-color);
       background: var(--tg-theme-bg-color);
     }
@@ -25,7 +25,6 @@
       padding: 10px;
       margin-bottom: 10px;
       box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
       color: var(--tg-theme-text-color);
       border-radius: 6px;
     }
@@ -34,10 +33,10 @@
       border-width: 1px;
     }
     label {
-      display: block; /* Полностью занимает ширину родительского элемента */
+      display: block; 
       /* font-weight: bold; Жирный шрифт */
-      text-align: left; /* Выравниваем текст по левому краю */
-      margin-bottom: 5px; /* Отступ снизу от каждого текстового поля */
+      text-align: left; 
+      margin-bottom: 5px; 
     }
     input[type="submit"] {
       background-color: #4CAF50;
@@ -61,64 +60,94 @@
       border-radius: 6px;
     }
     .buttons {
-  display: flex; /* Размещаем кнопки в одну строку */
-  justify-content: space-between; /* Распределяем с равными отступами */
-  flex-wrap: wrap; /* Позволяет элементам оборачиваться на новую строку */
-  max-width: 400px; /* Ширина соответствует максимальной ширине формы */
-  margin: 0 auto; /* Центрирование */
-  padding: 0; /* Убираем отступы */
-  box-sizing: border-box; /* Учитываем границы и отступы в общей ширине */
-}
-
-.buttons button {
-  flex: 1; /* Каждая кнопка займет доступное пространство */
-  margin: 5px; /* Небольшой отступ между кнопками */
-  white-space: normal; /* Позволяет тексту переноситься */
-  height: 40px; /* Задаем высоту кнопок */
-  display: flex; /* Включаем flexbox для центрирования текста */
-  align-items: center; /* Центрирование текста по вертикали */
-  justify-content: center; /* Центрирование текста по горизонтали */
-  text-align: center; /* Центрирование текста */
-  font-size: 14px; /* Размер шрифта, при необходимости можно уменьшить для улучшения читаемости */
+      display: flex; 
+      justify-content: space-between; 
+      flex-wrap: wrap; 
+      max-width: 400px; 
+      margin: 0 auto; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+  
+    .buttons button {
+      flex: 1; 
+      margin: 5px; 
+      white-space: normal; 
+      height: 40px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      font-size: 14px; 
       background-color: #4CAF50;
       color: white;
       cursor: pointer;
       border-radius: 8px;
       border: none;
-}
+    }
+
     .buttons button:hover {
       background-color: #45a049;
     }
+
     .checkbox-container {
       display: flex;
       align-items: center;
       padding-bottom: 15px;
       padding-top:15px;
     }
+
     #additionalText {
       text-align: left;
-      font-family: 'Montserrat', sans-serif;
       color: var(--tg-theme-text-color);
       font-size: 80%;
       line-height: 140%;
     }
-    select {
-  -webkit-appearance: none; /* Отключаем стандартный вид для WebKit браузеров */
-  appearance: none;
-  background-color: var(--tg-theme-secondary-bg-color);
-  color: var(--tg-theme-text-color);
-  border: 1px solid; /* Пример границы */
-  padding: 10px;
-  border-radius: 6px; /* Пример скругления углов */
-}
 
-/* Добавление стрелки, чтобы пользователь понимал, что это выпадающий список */
- select {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVR4nKVVO44aQRCdaIQEJF4TQIDE8JW83rVExE1AkJBwAX4H4BQka+OIr+AGRBBxAAe2JQKi3Q02A8ToWa93erY9wwxoKKlEq7vmPbqq+pWmeRiAbwAGAF7hba9WzKMXzjngzwB+AjB9gJ1mWkR3l8C/AvgrvzocDhgOh6hUKsjn8wiHw8K55t5oNBIxiv0BcO8H/iYjp9MpDMMAj/w8nU5jNpupJG8uEist4p+fTic0m82LwJrDW60WTNNUb/KRLivnwoKAa5Z3Oh31Jj8k+KMsKNMSFFyzfD6fq4V/0Kzqi2Ixn7cSpFIptfDfNdnn7JZbwTXLx+OxJHghgbByuewKHAwGCIVCnkC6rqPf77v2q9WqXQibIJvNugJpm80GyWTSdZZIJLBer99BHGd8Jy6CaDTqCtzv9+Jst9uhVCrZ+1xzj8YY53fEuoqgXq/bBeNvo9EQru4x5iqCXC53Ns/FYhHb7Vbt77O3Ur1QKLgJqC1exYzFYlgul/ZHq9UK8XjcM75Wq/1HINqUwuXXerquo9frCefaL3YymUj8Z/uhHY9HZDKZm9+AYRiuh2ZLBVXxVoLFYiHBT1RoqUfiFjSqYlDwbrer9sHTWbmm5Lbb7UBKan7I9W8An5wz4V4dOFTFa2rCGCUtsDC+eE01vvFfMpKFp3BRW9jbkUhEONfcY7cwRjHvkamQ3LH6AYb+08Wh7yB64FSi5PoAP1t/5r1bztg/XZZ/pwOOAkUAAAAASUVORK5CYII=');
-  background-position: right 10px center;
-  background-repeat: no-repeat;
-  background-size: 3%;
-}
+    select {
+      -webkit-appearance: none; 
+      appearance: none;
+      background-color: var(--tg-theme-secondary-bg-color);
+      color: var(--tg-theme-text-color);
+      border: 1px solid; 
+      padding: 10px;
+      border-radius: 6px; 
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVR4nKVVO44aQRCdaIQEJF4TQIDE8JW83rVExE1AkJBwAX4H4BQka+OIr+AGRBBxAAe2JQKi3Q02A8ToWa93erY9wwxoKKlEq7vmPbqq+pWmeRiAbwAGAF7hba9WzKMXzjngzwB+AjB9gJ1mWkR3l8C/AvgrvzocDhgOh6hUKsjn8wiHw8K55t5oNBIxiv0BcO8H/iYjp9MpDMMAj/w8nU5jNpupJG8uEist4p+fTic0m82LwJrDW60WTNNUb/KRLivnwoKAa5Z3Oh31Jj8k+KMsKNMSFFyzfD6fq4V/0Kzqi2Ixn7cSpFIptfDfNdnn7JZbwTXLx+OxJHghgbByuewKHAwGCIVCnkC6rqPf77v2q9WqXQibIJvNugJpm80GyWTSdZZIJLBer99BHGd8Jy6CaDTqCtzv9+Jst9uhVCrZ+1xzj8YY53fEuoqgXq/bBeNvo9EQru4x5iqCXC53Ns/FYhHb7Vbt77O3Ur1QKLgJqC1exYzFYlgul/ZHq9UK8XjcM75Wq/1HINqUwuXXerquo9frCefaL3YymUj8Z/uhHY9HZDKZm9+AYRiuh2ZLBVXxVoLFYiHBT1RoqUfiFjSqYlDwbrer9sHTWbmm5Lbb7UBKan7I9W8An5wz4V4dOFTFa2rCGCUtsDC+eE01vvFfMpKFp3BRW9jbkUhEONfcY7cwRjHvkamQ3LH6AYb+08Wh7yB64FSi5PoAP1t/5r1bztg/XZZ/pwOOAkUAAAAASUVORK5CYII=');
+      background-position: right 10px center;
+      background-repeat: no-repeat;
+      background-size: 3%;
+    }
+
+    #registrationForm {
+      display: block;
+    }
+
+    #successMessage {
+      display: none;
+    }
+
+    #error {
+      color: #e60000;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .shake-animation {
+      animation-duration: 0.2s;
+      animation-name: shake;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;  
+      animation-iteration-count: 1;   
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+      100% { transform: translateX(3px); }
+    }
+
 
 
   </style>
@@ -133,6 +162,8 @@
   </div>
 
   <h2>Регистрация</h2>
+
+  <div id="successMessage"><p>Вы успешно зарегистрированы.</p></div>
 
   <form id="registrationForm">
     <label for="choice">Выберите дату посещения:</label>
@@ -175,8 +206,8 @@
   <input type="checkbox" id="agree" name="agree" required>
   <label for="agree">Согласие на обработку персональных данных (в соответствии с Федеральным закон от 27.07.2006 N 152-ФЗ (ред. от 06.02.2023) "О персональных данных")</label>
 </div>
-
-    <input type="submit" value="Зарегистрироваться">
+    <div id='error'></div>
+    <input type="submit" id="signUp" name="signUp" value="Зарегистрироваться">
   </form>
 
 <script>
@@ -199,14 +230,80 @@
     });
 
     document.addEventListener('click', function(e) {
-  // Проверяем, что нажатие произошло вне элементов ввода
   if (!e.target.matches('input, select, textarea, button')) {
-    // Убираем фокус с активного элемента
     if (document.activeElement && document.activeElement.blur) {
       document.activeElement.blur();
     }
   }
 });
+</script>
+
+<script>
+
+  let tg = window.Telegram.WebApp;
+  tg.expand();
+
+  let signUp = document.getElementById("signUp");
+
+  const error = document.getElementById('error');
+
+  signUp.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    var choice = document.getElementById("choice").value;
+    var name = document.getElementById("name").value;
+    var passport = document.getElementById("passport").value;
+    var age = document.getElementById("age").value;
+    var email = document.getElementById("email").value;
+    var city = document.getElementById("city").value;
+    var job = document.getElementById("job").value;
+    var company = document.getElementById("company").value;
+    var purpose = document.getElementById("purpose").value;
+    var agree = document.getElementById("agree");
+
+    if (choice === "option1" || choice === "option2" || choice === "option3") { // если выбрана дата
+        if (name === '' || passport === '' || age === '' || email === '' || city === '' || job === '' || company === '' || purpose === '' || !agree.checked) {
+         // если где-то не заполнено поле
+          document.getElementById('error').innerText = "Заполните все поля";
+          error.classList.add("shake-animation");
+          error.addEventListener('animationend', () => {
+             error.classList.remove("shake-animation");
+          });
+          return;
+          } 
+        else {
+        // если всё заполнено
+          let data = {
+            date: choise,
+            name: name,
+            passport: passport,
+            age: age,
+            email: email,
+            city: city,
+            job: job,
+            company: company,
+            purpose: purpose,
+            agree: agree
+          }
+          tg.sendData(JSON.stringify(data))
+
+
+          document.getElementById("registrationForm").style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
+        }
+    }
+    else {
+      // если не выбрана дата
+       document.getElementById('error').innerText = "Выберите дату";
+       error.classList.add("shake-animation");
+       error.addEventListener('animationend', () => {
+        error.classList.remove("shake-animation");
+       });
+       return;
+      }
+     
+  });
+
 </script>
 
 </body>
