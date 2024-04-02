@@ -305,6 +305,24 @@
      
   });
 
+const user = tg.WebApp.initDataUnsafe.user
+user_id = user.id
+
+const url = `http://185.108.19.22:8080/api/v2/tables/mkn56a1jv7weyf7/records?where=(user_id,eq,${user_id})`;
+
+fetch(url, {
+    method: 'GET', // Или 'POST', если это необходимо для вашего запроса
+    headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer 69fR2jwZBoDPtcm6jtbeYKxRGTkdMlZCbIKuNCDb',
+        'Content-Type': 'application/json'
+    },
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch((error) => console.error('Error:', error));
+
+  
 </script>
 
 </body>
