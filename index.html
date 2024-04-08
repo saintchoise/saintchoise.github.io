@@ -7,30 +7,41 @@
   <title>Регистрация</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/libertinus-math');
 
     
     body {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Manrope', sans-serif;
       text-align: center; 
-      color: var(--tg-theme-text-color);
-      background: var(--tg-theme-bg-color);
-    }
-    form {
+      color: #FFFFFF;
+      background: #001137;
       max-width: 400px;
       margin: 0 auto;
+    }
+    #reg {
+      font-family: 'Libertinus Math', sans-serif;
+      font-size: 250%;
+    }
+
+    form {
+      margin-left: 20px;
+      margin-right: 20px;
     }
     input[type="text"], textarea, select, input[type="checkbox"], #additionalText {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       box-sizing: border-box;
-      color: var(--tg-theme-text-color);
+      color: #FFFFFF;
       border-radius: 6px;
     }
-    input, textarea, #choise {
-      background-color: var(--tg-theme-secondary-bg-color);
+    input, textarea, #choice {
+      background-color: #00184d;
       border-width: 1px;
+    }
+    #choice {
+      font-family: 'Manrope';
     }
     label {
       display: block; 
@@ -108,9 +119,8 @@
     select {
       -webkit-appearance: none; 
       appearance: none;
-      background-color: var(--tg-theme-secondary-bg-color);
-      color: var(--tg-theme-text-color);
-      border: 1px solid; 
+      background-color: #00184d;
+      color: #FFFFFF;
       padding: 10px;
       border-radius: 6px; 
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACJ0lEQVR4nKVVO44aQRCdaIQEJF4TQIDE8JW83rVExE1AkJBwAX4H4BQka+OIr+AGRBBxAAe2JQKi3Q02A8ToWa93erY9wwxoKKlEq7vmPbqq+pWmeRiAbwAGAF7hba9WzKMXzjngzwB+AjB9gJ1mWkR3l8C/AvgrvzocDhgOh6hUKsjn8wiHw8K55t5oNBIxiv0BcO8H/iYjp9MpDMMAj/w8nU5jNpupJG8uEist4p+fTic0m82LwJrDW60WTNNUb/KRLivnwoKAa5Z3Oh31Jj8k+KMsKNMSFFyzfD6fq4V/0Kzqi2Ixn7cSpFIptfDfNdnn7JZbwTXLx+OxJHghgbByuewKHAwGCIVCnkC6rqPf77v2q9WqXQibIJvNugJpm80GyWTSdZZIJLBer99BHGd8Jy6CaDTqCtzv9+Jst9uhVCrZ+1xzj8YY53fEuoqgXq/bBeNvo9EQru4x5iqCXC53Ns/FYhHb7Vbt77O3Ur1QKLgJqC1exYzFYlgul/ZHq9UK8XjcM75Wq/1HINqUwuXXerquo9frCefaL3YymUj8Z/uhHY9HZDKZm9+AYRiuh2ZLBVXxVoLFYiHBT1RoqUfiFjSqYlDwbrer9sHTWbmm5Lbb7UBKan7I9W8An5wz4V4dOFTFa2rCGCUtsDC+eE01vvFfMpKFp3BRW9jbkUhEONfcY7cwRjHvkamQ3LH6AYb+08Wh7yB64FSi5PoAP1t/5r1bztg/XZZ/pwOOAkUAAAAASUVORK5CYII=');
@@ -161,7 +171,7 @@
     <button onclick="window.location.href='партнеры.html'">Партнеры</button>
   </div>
 
-  <h2>Регистрация</h2>
+  <h2 id="reg">Регистрация</h2>
 
   <div id="successMessage"><p>Вы успешно зарегистрированы.</p></div>
 
