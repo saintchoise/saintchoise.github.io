@@ -86,23 +86,39 @@
       justify-content: space-around;
       max-width: 400px;
       margin: auto;
-      align-items: center;
+      align-items: stretch;
     }
 
     .column {
       flex: 0 0 50%; /* Каждый столбец занимает равное пространство */
       max-width: 200px;
+      max-height: ;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       text-align: center;
       margin-bottom: 15px;
+      position: relative; /* Позиционируем блок относительно родителя */
+    }
+
+    .column::before {
+      content: ''; /* Создаем пустой элемент */
+      display: block;
+      height: auto; /* Автоматическая высота */
+      width: 100%;
+      position: absolute; /* Абсолютное позиционирование */
+      top: 0; /* Отступ сверху */
+    }
+
+    .name {
+      max-height: 90px;
     }
 
     .column h1 {
       margin-bottom: 10px; /* Отступ между названием и логотипом */
-      font-size: 100%;
+      height: px;
+      font-size: 90%;
     }
 
     #link {
@@ -127,6 +143,11 @@
       object-fit: contain; /* Сохраняет пропорции изображения, позволяя ему масштабироваться в рамках контейнера */
     }
 
+    #museum {
+      margin-bottom: 3px;
+      font-size: 77%;
+    }
+
     #raum {
       max-height: 50%;
     }
@@ -139,7 +160,7 @@
       max-height: 130%;
     }
 
-    #kopirka, #dodo {
+    #kopirka, #dodo, #vecherka {
       max-width: 90%;
     }
 
@@ -148,10 +169,10 @@
     }
 
     #irimr-title {
-      font-size: 93%;
+      font-size: 80%;
     }
 
-    #minmol_kchr, #wrestling, #murmansk, #irimr-logo, #seatcover {
+    #minmol_kchr, #wrestling, #murmansk, #irimr-logo, #seatcover, #molod_lo {
       max-height: 90%;
     }
 
@@ -173,14 +194,14 @@
 
   <div class="container">
         <div class="column">
-            <h1 id="link">МХК</h1>
+            <div class="name"><h1 id="museum">Музей Христианской Культуры</h1></div>
             <a href="https://mcc.spb.ru/">Сайт</a>
             <div class="image-container">
               <img src="logos/MXK.svg" alt="МХК">
             </div>
         </div>
         <div class="column">
-            <h1 id="link">Команда страны</h1>
+            <div class="name"><h1 id="link">Команда страны</h1></div>
             <a href="https://xn----7sbabr8aojec2aln3k.xn--p1ai/">Сайт</a>
             <div class="image-container">
               <img src="logos/komanda_strany.png" alt="Команда страны">
@@ -194,14 +215,14 @@
   <div class="container">
         <!-- 1 строка -->
         <div class="column">
-            <h1 id="link">ГК RAUM</h1>
+            <div class="name"><h1 id="link">ГК RAUM</h1></div>
             <a href="https://raum.group/">Сайт</a>
             <div class="image-container">
               <img src="logos/raum.png" alt="ГК RAUM" id="raum">
             </div>
         </div>
         <div class="column">
-            <h1 id="link">МФК Наследие</h1>
+            <div class="name"><h1 id="link">МФК Наследие</h1></div>
             <a href="https://heritage.spb.ru/">Сайт</a>
             <div class="image-container">
               <img src="logos/mfk_nasled.jpeg" alt="МФК Наследие">
@@ -210,13 +231,13 @@
 
         <!-- 2 строка -->
         <div class="column">
-            <h1>СК Галион</h1>
+            <div class="name"><h1>СК Галион</h1></div>
             <div class="image-container">
               <img src="logos/galion.png" alt="СК Галион">
             </div>
         </div>
         <div class="column">
-            <h1>Ювелирный дом</h1>
+            <div class="name"><h1>Ювелирный дом</h1></div>
             <div class="image-container">
               <img src="logos/rnj.svg" alt="Ювелирный дом ROMAN NIKONOV" id="rnj">
             </div>
@@ -224,14 +245,14 @@
 
         <!-- 3 строка -->
         <div class="column">
-            <h1 id="link">Отель Наследие</h1>
+            <div class="name"><h1 id="link">Отель Наследие</h1></div>
             <a href="https://n-hotel.spb.ru/">Сайт</a>
             <div class="image-container">
               <img src="logos/heritage_hotel.jpeg" alt="Отель Наследие" id="heritage">
             </div>
         </div>
         <div class="column">
-            <h1 id="link">Отель Мармара</h1>
+            <div class="name"><h1 id="link">Отель Мармара</h1></div>
             <a href="https://marmara.spb.ru/ru/">Сайт</a>
             <div class="image-container">
               <img src="logos/marmara.png" alt="Отель Мармара">
@@ -240,13 +261,13 @@
 
         <!-- 4 строка -->
         <div class="column">
-            <h1>Молодёжный парламент ЛО</h1>
+            <div class="name"><h1>Молодёжный парламент ЛО</h1></div>
             <div class="image-container">
-              <img src="logos/molod_parlament_lo.png" alt="Молодёжный парламент ЛО">
+              <img src="logos/molod_parlament_lo.png" alt="Молодёжный парламент ЛО" id="molod_lo">
             </div>
         </div>
         <div class="column">
-            <h1>Общественная палата Санкт-Петербурга</h1>
+            <div class="name"><h1>Общественная палата Санкт-Петербурга</h1></div>
             <div class="image-container">
               <img src="logos/op_spb.jpg" alt="Общественная палата Санкт-Петербурга">
             </div>
@@ -254,161 +275,175 @@
 
         <!-- 5 строка -->
         <div class="column">
-            <h1>Моя Страна</h1>
+            <div class="name"><h1>Вечерний Санкт-Петербург</h1></div>
             <div class="image-container">
-              <img src="logos/my_country.jpg" alt="Моя Страна">
+              <img src="logos/vecherka.jpg" alt="Вечерний Санкт-Петербург" id="vecherka">
             </div>
         </div>
         <div class="column">
-            <h1>Копирка</h1>
+            <div class="name"><h1>Петербургский Дневник</h1></div>
             <div class="image-container">
-              <img src="logos/kopirka.png" alt="Копирка" id="kopirka">
+              <img src="logos/dnevnik.png" alt="Петербургский Дневник">
             </div>
         </div>
 
         <!-- 6 строка -->
         <div class="column">
-            <h1>Додо Пицца</h1>
+            <div class="name"><h1>Моя Страна</h1></div>
             <div class="image-container">
-              <img src="logos/dodo.svg" alt="Додо Пицца" id="dodo">
+              <img src="logos/my_country.jpg" alt="Моя Страна">
             </div>
         </div>
         <div class="column">
-            <h1>АЙРОС-СИСТЕМ</h1>
+            <div class="name"><h1>Копирка</h1></div>
             <div class="image-container">
-              <img src="logos/airos.png" alt="АЙРОС-СИСТЕМ">
+              <img src="logos/kopirka.png" alt="Копирка" id="kopirka">
             </div>
         </div>
 
         <!-- 7 строка -->
         <div class="column">
-            <h1 id="university">Санкт-Петербургский университет технологий управления и экономики</h1>
+            <div class="name"><h1>Додо Пицца</h1></div>
             <div class="image-container">
-              <img src="logos/univers_uprav_econom.jpg" alt="Санкт-Петербургский университет технологий управления и экономики">
+              <img src="logos/dodo.svg" alt="Додо Пицца" id="dodo">
             </div>
         </div>
         <div class="column">
-            <h1 id="university">Министрество по делам молодежи Карачаево-Черкесской Республики</h1>
+            <div class="name"><h1>АЙРОС-СИСТЕМ</h1></div>
             <div class="image-container">
-              <img src="logos/minmol_kchr.png" alt="Министрество по делам молодежи Карачаево-Черкесской Республики" id="minmol_kchr">
+              <img src="logos/airos.png" alt="АЙРОС-СИСТЕМ">
             </div>
         </div>
 
         <!-- 8 строка -->
         <div class="column">
-            <h1>СПбГУТ им. проф. М.А. Бонч-Бруевича</h1>
+            <div class="name"><h1 id="university">Санкт-Петербургский университет технологий управления и экономики</h1></div>
+            <div class="image-container">
+              <img src="logos/univers_uprav_econom.jpg" alt="Санкт-Петербургский университет технологий управления и экономики">
+            </div>
+        </div>
+        <div class="column">
+            <div class="name"><h1 id="university">Министрество по делам молодежи Карачаево-Черкесской Республики</h1></div>
+            <div class="image-container">
+              <img src="logos/minmol_kchr.png" alt="Министрество по делам молодежи Карачаево-Черкесской Республики" id="minmol_kchr">
+            </div>
+        </div>
+
+        <!-- 9 строка -->
+        <div class="column">
+            <div class="name"><h1>СПбГУТ им. проф. М.А. Бонч-Бруевича</h1></div>
             <div class="image-container">
               <img src="logos/bonch.svg" alt="СПбГУТ им. проф. М.А. Бонч-Бруевича">
             </div>
         </div>
         <div class="column">
-            <h1>Центр Гуманитарных Технологий</h1>
+            <div class="name"><h1>Центр Гуманитарных Технологий</h1></div>
             <div class="image-container">
               <img src="logos/centrgt.png" alt="Центр Гуманитарных Технологий">
             </div>
         </div>
 
-        <!--9 строка -->
+        <!-- 10 строка -->
         <div class="column">
-            <h1>Балтийский Симфонический Оркестр</h1>
+            <div class="name"><h1>Балтийский Симфонический Оркестр</h1></div>
             <div class="image-container">
               <img src="logos/baltic_orckestr.jpg" alt="Балтийский Симфонический Оркестр">
             </div>
         </div>
         <div class="column">
-            <h1>Федерация Армрестлинга Санкт-Петербурга</h1>
+            <div class="name"><h1>Федерация Армрестлинга Санкт-Петербурга</h1></div>
             <div class="image-container">
               <img src="logos/armwrestling.png" alt="Федерация Армрестлинга Санкт-Петербурга" id="wrestling">
             </div>
         </div>
 
-        <!-- 10 строка -->
+        <!-- 11 строка -->
         <div class="column">
-            <h1>SmartyKids</h1>
+            <div class="name"><h1>SmartyKids</h1></div>
             <div class="image-container">
               <img src="logos/smartykids.png" alt="SmartyKids">
             </div>
         </div>
         <div class="column">
-            <h1>Baltic Sound Production</h1>
+            <div class="name"><h1>Baltic Sound Production</h1></div>
             <div class="image-container">
               <img src="logos/baltic_sound.jpg" alt="Baltic Sound Production">
             </div>
         </div>
 
-         <!-- 11 строка -->
+         <!-- 12 строка -->
         <div class="column">
-            <h1>Императорский Фарфоровый Завод</h1>
+            <div class="name"><h1>Императорский Фарфоровый Завод</h1></div>
             <div class="image-container">
               <img src="logos/ipm.svg" alt="Императорский Фарфоровый Завод">
             </div>
         </div>
         <div class="column">
-            <h1>Федерация самбо Санкт-Петербурга</h1>
+            <div class="name"><h1>Федерация самбо Санкт-Петербурга</h1></div>
             <div class="image-container">
               <img src="logos/sambo.png" alt="Федерация самбо Санкт-Петербурга">
             </div>
         </div>
 
-        <!-- 12 строка -->
+        <!-- 13 строка -->
         <div class="column">
-            <h1>АНО "Наука любви к Отечеству"</h1>
+            <div class="name"><h1>АНО "Наука любви к Отечеству"</h1></div>
             <div class="image-container">
               <img src="logos/country_love.jpg" alt="АНО Наука любви к Отечеству">
             </div>
         </div>
         <div class="column">
-            <h1>Академия Эстетический Медицины</h1>
+            <div class="name"><h1>Академия Эстетический Медицины</h1></div>
             <div class="image-container">
               <img src="logos/aem.png" alt="Академия Эстетический Медицины" id="aem">
             </div>
         </div>
 
-        <!-- 13 строка -->
+        <!-- 14 строка -->
         <div class="column">
-            <h1>Молодёжный Парламент Мурманской Области</h1>
+            <div class="name"><h1>Молодёжный Парламент Мурманской Области</h1></div>
             <div class="image-container">
               <img src="logos/murmansk.jpg" alt="Молодёжный Парламент Мурманской Области" id="murmansk">
             </div>
         </div>
         <div class="column">
-            <h1>Центр Системных Инициатив</h1>
+            <div class="name"><h1>Центр Системных Инициатив</h1></div>
             <div class="image-container">
               <img src="logos/centrsi.png" alt="Центр Системных Инициатив">
             </div>
         </div>
 
-        <!-- 14 строка -->
+        <!-- 15 строка -->
         <div class="column">
-            <h1>СПбРОФ "ДОМ на Сестрорецкой"</h1>
+            <div class="name"><h1>СПбРОФ "ДОМ на Сестрорецкой"</h1></div>
             <div class="image-container">
               <img src="logos/dom.svg" alt="СПбРОФ ДОМ на Сестрорецкой">
             </div>
         </div>
         <div class="column">
-            <h1 id="irimr-title">Институт Регионального и Муниципального развития</h1>
+            <div class="name"><h1 id="irimr-title">Институт Регионального и Муниципального развития</h1></div>
             <div class="image-container">
               <img src="logos/irimr.png" alt="Институт Регионального и Муниципального развития" id="irimr-logo">
             </div>
         </div>
 
-        <!-- 15 строка -->
+        <!-- 16 строка -->
         <div class="column">
-            <h1>K-4PRO</h1>
+            <div class="name"><h1>K-4PRO</h1></div>
             <div class="image-container">
               <img src="logos/k4pro.png" alt="K-4PRO" id="k4pro">
             </div>
         </div>
         <div class="column">
-            <h1>SeatCover</h1>
+            <div class="name"><h1>SeatCover</h1></div>
             <div class="image-container">
               <img src="logos/seatcover.svg" alt="SeatCover" id="seatcover">
             </div>
         </div>
 
-        <!-- 16 строка -->
+        <!-- 17 строка -->
         <div class="column">
-            <h1>Муравушка</h1>
+            <div class="name"><h1>Муравушка</h1></div>
             <div class="image-container">
               <img src="logos/murawuska.png" alt="Муравушка">
             </div>
