@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обратная связь</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/libertinus-math');
+
+    
+    body {
+      font-family: 'Manrope', sans-serif;
+      text-align: center; 
+      color: #FFFFFF;
+      background: #001137;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    #reg {
+      font-family: 'Libertinus Math', sans-serif;
+      font-size: 250%;
+    }
+
+    form {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    input[type="text"], textarea, select, input[type="checkbox"], #additionalText {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      border-radius: 6px;
+    }
+    input, textarea, #choice {
+      background-color: #00184d;
+      border-width: 1px;
+    }
+    #choice {
+      font-family: 'Manrope';
+    }
+    label {
+      display: block; 
+      /* font-weight: bold; Жирный шрифт */
+      text-align: left; 
+      margin-bottom: 5px; 
+    }
+    input[type="submit"] {
+      background-color: #00184d;
+      color: white;
+      padding: 15px 20px;
+      border: 1px solid;
+      border-radius: 8px;
+      cursor: pointer;
+      height: 60px;
+      width: 60%;
+      font-size: 110%;
+    }
+    input[type="submit"]:hover {
+      background-color: #002066;
+    }
+    input[type="number"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      color: #FFFFFF;
+    }
+    .buttons {
+      display: none; /* flex */ 
+      justify-content: space-between; 
+      flex-wrap: wrap; 
+      max-width: 400px; 
+      margin: 0 auto; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+  
+    .buttons button {
+      flex: 1; 
+      margin: 5px; 
+      white-space: normal; 
+      height: 40px;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      font-size: 14px; 
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .buttons button:hover {
+      background-color: #45a049;
+    }
+
+    #registrationForm {
+      display: block;
+    }
+
+    #error {
+      color: #e60000;
+      padding: 10px;
+    }
+
+    .shake-animation {
+      animation-duration: 0.2s;
+      animation-name: shake;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;  
+      animation-iteration-count: 1;   
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-3px); }
+      100% { transform: translateX(3px); }
+    }
+
+    #buttonContainer {
+      display: flex; /* Устанавливаем flex-контейнер */
+      justify-content: space-between; /* Распределяем элементы вдоль главной оси (горизонтально) */
+      align-items: center; /* Выравниваем элементы по центру по вертикали */
+      margin-bottom: 30px; /* Добавляем немного отступа снизу */
+    }
+
+    #commentSection, #commentAnotherEventSection {
+      margin-bottom: 20px;
+    }
+
+    #signUp, #placeTitle, #anotherEventTitle {
+      margin-top: 20px;
+    }
+
+    #req {
+      color: #e60000;
+    }
+
+    #subtitle {
+      margin: 0 20px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div id="usercard"> </div>
+
+  <h2 id="reg">Обратная связь</h2>
+  <p id="subtitle">Мы благодарим каждого из Вас за участие в Пасхальном Форуме: Год Семьи. и будем рады получить от Вас обратную связь. Ниже мы подготовили краткий опрос, где Вы сможете рассказать о своем впечатлении от мероприятия. </p><br>
+
+  <form id="registrationForm">
+
+    <label for="impression">Как бы вы оценили свое общее впечатление от мероприятия? (от 1 до 10) <span id="req">*</span></label>
+    <input type="number" id="impression" name="impression" min="1" max="10" step="1" required>
+
+    <label for="like">Что вам больше всего понравилось на мероприятии? <span id="req">*</span></label>
+    <textarea rows="3" id="like" name="like" required></textarea>
+
+    <label for="dislike">Что вам меньше всего понравилось в мероприятии? <span id="req">*</span></label>
+    <textarea rows="3" id="dislike" name="dislike" required></textarea>
+
+    <label for="expectation">Событие оправдало ваши ожидания? Почему или почему нет? <span id="req">*</span></label>
+    <textarea rows="3" id="expectation" name="expectation" required></textarea>
+
+    <label for="speaker">Как бы вы оценили качество спикеров/презентаторов? (от 1 до 10) <span id="req">*</span></label>
+    <input type="number" id="speaker" name="speaker" min="1" max="10" step="1" required>
+
+    <label for="place" id="placeTitle">Было ли место проведения подходящим и удобным? <span id="req">*</span></label><br>
+    <div id="buttonContainer">
+      <input type="radio" id="placeYes" name="place" value="yes">
+      <label for="placeYes">Да</label><br>
+      <input type="radio" id="placeNo" name="place" value="no">
+      <label for="placeNo">Нет</label><br>
+    </div>
+
+    <div id="commentSection" style="display: none;">
+      <label for="comment">Почему?</label>
+      <textarea id="comment" name="comment"></textarea>
+    </div>
+
+    <label for="organization">Как бы вы оценили организацию мероприятия? (от 1 до 10) <span id="req">*</span></label>
+    <input type="number" id="organization" name="organization" min="1" max="10" step="1" required>
+
+    <label for="offers">Какие у вас есть предложения по улучшению будущих мероприятий?</label>
+    <textarea rows="3" id="offers" name="offers"></textarea>
+
+    <label for="anotherEvent" id="anotherEventTitle">Вы бы посетили другое мероприятие, организованное нашей организацией? <span id="req">*</span></label><br>
+    <div id="buttonContainer">
+      <input type="radio" id="anotherEventYes" name="anotherEvent" value="yes">
+      <label for="anotherEventYes">Да</label><br>
+      <input type="radio" id="anotherEventNo" name="anotherEvent" value="no">
+      <label for="anotherEventNo">Нет</label><br>
+    </div>
+
+    <div id="commentAnotherEventSection" style="display: none;">
+      <label for="anotherComment">Почему?</label>
+      <textarea id="anotherComment" name="anotherComment"></textarea>
+    </div>
+
+    <label for="other">Есть ли какие-либо другие отзывы, которые вы хотели бы предоставить?</label>
+    <textarea rows="3" id="other" name="other"></textarea>
+
+    <div id='error'></div>
+    <input type="submit" id="signUp" name="signUp" value="Отправить">
+
+<script>
+
+  // Получаем элементы DOM
+  let placeYes = document.getElementById("placeYes");
+  let placeNo = document.getElementById("placeNo");
+  let commentSection = document.getElementById("commentSection");
+
+ // Добавляем обработчик событий
+  placeYes.addEventListener("change", function() {
+    if (this.checked) {
+      commentSection.style.display = "none"; // Скрываем дополнительное поле для комментария
+    }
+  });
+
+  placeNo.addEventListener("change", function() {
+    if (this.checked) {
+      commentSection.style.display = "block"; // Показываем дополнительное поле для комментария
+    }
+  });
+
+    document.addEventListener('click', function(e) {
+  if (!e.target.matches('input, select, textarea, button')) {
+    if (document.activeElement && document.activeElement.blur) {
+      document.activeElement.blur();
+    }
+  }
+});
+
+    // Получаем элементы DOM
+  let anotherEventYes = document.getElementById("anotherEventYes");
+  let anotherEventNo = document.getElementById("anotherEventNo");
+  let commentAnotherEventSection = document.getElementById("commentAnotherEventSection");
+
+ // Добавляем обработчик событий
+  anotherEventYes.addEventListener("change", function() {
+    if (this.checked) {
+      commentAnotherEventSection.style.display = "none"; // Скрываем дополнительное поле для комментария
+    }
+  });
+
+  anotherEventNo.addEventListener("change", function() {
+    if (this.checked) {
+      commentAnotherEventSection.style.display = "block"; // Показываем дополнительное поле для комментария
+    }
+  });
+
+    document.addEventListener('click', function(e) {
+  if (!e.target.matches('input, select, textarea, button')) {
+    if (document.activeElement && document.activeElement.blur) {
+      document.activeElement.blur();
+    }
+  }
+});
+
+</script>
+
+<script>
+
+  let tg = window.Telegram.WebApp;
+  tg.expand();
+
+  let signUp = document.getElementById("signUp");
+
+  const error = document.getElementById('error');
+
+  signUp.addEventListener('click', (event) => {
+    event.preventDefault();
+
+  var impression = document.getElementById("impression").value;
+  var like = document.getElementById("like").value;
+  var dislike = document.getElementById("dislike").value;
+  var expectation = document.getElementById("expectation").value;
+  var speaker = document.getElementById("speaker").value;
+  var organization = document.getElementById("organization").value;
+  var placeYes = document.getElementById("placeYes").checked;
+  var placeNo = document.getElementById("placeNo").checked;
+  var comment = document.getElementById("comment").value;
+  var offers = document.getElementById("offers").value;
+  var anotherEventYes = document.getElementById("anotherEventYes").checked;
+  var anotherEventNo = document.getElementById("anotherEventNo").checked;
+  var anotherComment = document.getElementById("anotherComment").value;
+
+  if (!impression || !like || !dislike || !expectation || !speaker || !organization) {
+    document.getElementById('error').innerText = "Заполните все поля *";
+    error.classList.add("shake-animation");
+    error.addEventListener('animationend', () => {
+      error.classList.remove("shake-animation");
+    });
+    return;
+  }
+
+  if (!placeYes && !placeNo) {
+    document.getElementById('error').innerText = "Заполните все поля *";
+    error.classList.add("shake-animation");
+    error.addEventListener('animationend', () => {
+      error.classList.remove("shake-animation");
+    });
+    return;
+  }
+
+  if (placeNo && !comment) {
+    document.getElementById('error').innerText = "Заполните комментарий 'Почему?'";
+    error.classList.add("shake-animation");
+    error.addEventListener('animationend', () => {
+      error.classList.remove("shake-animation");
+    });
+    return;
+  }
+
+  if (!anotherEventYes && !anotherEventNo) {
+    document.getElementById('error').innerText = "Заполните все поля *";
+    error.classList.add("shake-animation");
+    error.addEventListener('animationend', () => {
+      error.classList.remove("shake-animation");
+    });
+    return;
+  }
+
+  if (anotherEventNo && !anotherComment) {
+    document.getElementById('error').innerText = "Заполните комментарий 'Почему?'";
+    error.classList.add("shake-animation");
+    error.addEventListener('animationend', () => {
+      error.classList.remove("shake-animation");
+    });
+    return;
+  }
+
+  // Если все условия выполнены, формируем объект data
+  let data = {
+    impression: impression,
+    like: like,
+    dislike: dislike,
+    expectation: expectation,
+    speaker: speaker,
+    organization: organization,
+    place: placeYes ? "Да" : "Нет",
+    comment: comment,
+    offers: offers,
+    anotherEvent: anotherEventYes ? "Да" : "Нет",
+    anotherComment: anotherComment
+  };
+
+  // Отправляем данные
+  tg.sendData(JSON.stringify(data));
+
+     
+  });
+
+</script>
+
+</body>
+</html>
