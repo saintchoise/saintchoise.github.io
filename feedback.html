@@ -296,6 +296,7 @@
   var anotherEventYes = document.getElementById("anotherEventYes").checked;
   var anotherEventNo = document.getElementById("anotherEventNo").checked;
   var anotherComment = document.getElementById("anotherComment").value;
+  var other = document.getElementById("other").value;
 
   if (!impression || !like || !dislike || !expectation || !speaker || !organization) {
     document.getElementById('error').innerText = "Заполните все поля *";
@@ -354,7 +355,8 @@
     comment: comment,
     offers: offers,
     anotherEvent: anotherEventYes ? "Да" : "Нет",
-    anotherComment: anotherComment
+    anotherComment: anotherComment,
+    other: other
   };
 
   // Отправляем данные
